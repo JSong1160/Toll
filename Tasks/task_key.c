@@ -12,8 +12,8 @@
 #include "task_key.h"
 /* USER CODE BEGIN 0 */
 void KEY_Scan(void);
-
-	uint8_t key_a,key_b,key_c;
+uint8_t Button_GetState(uint16_t pin);
+uint8_t Button_Debounce(uint16_t pin);
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
@@ -21,16 +21,75 @@ void KEY_Scan(void);
 /*----------------------------------------------------------------------------*/
 void KEY_Scan(void)
 {
+	uint8_t button1State = Button_Debounce(KEY_A__Pin);
+	uint8_t button2State = Button_Debounce(KEY_B__Pin);
+	uint8_t button3State = Button_Debounce(KEY_CO_Pin);
 
-	
-	key_a = HAL_GPIO_ReadPin(GPIOB,KEY_A__Pin);
-	key_b = HAL_GPIO_ReadPin(GPIOB,KEY_B__Pin);
-	key_c = HAL_GPIO_ReadPin(GPIOB,KEY_CO_Pin);
+	if (button1State) // 按键1被按下时执行的代码
+	{
+			
+	} else // 按键1松开时执行的代码
+	{
+			
+	}
 
-	
+	if (button2State) // 按键2被按下时执行的代码
+	{
+			
+	} else // 按键2松开时执行的代码
+	{
+			
+	}
 
+	if (button3State) // 按键3被按下时执行的代码
+	{
+			
+	} else // 按键3松开时执行的代码
+	{
+			
+	}
 }
 
+
+// 获取按键状态，返回1表示按键按下，返回0表示按键松开
+uint8_t Button_GetState(uint16_t pin) {
+    return HAL_GPIO_ReadPin(BUTTON_PORT, pin) == GPIO_PIN_RESET ? 1 : 0; //这里调试看一下输出0还是1
+}
+
+
+// 按键消抖函数
+uint8_t Button_Debounce(uint16_t pin) {
+    static uint8_t buttonState[3] = {0};  // 按键当前状态
+    static uint8_t lastButtonState[3] = {0};  // 按键上一次的状态
+    static uint32_t lastDebounceTime[3] = {0};  // 上一次消抖的时间
+
+    uint8_t index = 0;
+    if (pin == KEY_A__Pin) index = 0;
+    else if (pin == KEY_B__Pin) index = 1;
+    else if (pin == KEY_CO_Pin) index = 2;
+
+    uint8_t currentState = Button_GetState(pin);
+    uint32_t currentTime = HAL_GetTick();  // 获取当前时间（毫秒）
+
+    // 如果按键状态发生了变化，更新消抖计时
+    if (currentState != lastButtonState[index]) 
+		{
+        lastDebounceTime[index] = currentTime;
+    }
+
+    // 只有当按键状态稳定超过消抖延迟时间时，才更新按键状态
+    if ((currentTime - lastDebounceTime[index]) > DEBOUNCE_DELAY)			
+		{
+        if (currentState != buttonState[index]) 
+				{
+            buttonState[index] = currentState;
+        }
+    }
+
+    lastButtonState[index] = currentState;
+
+    return buttonState[index];
+}
 /* USER CODE BEGIN 2 */
 
 /* USER CODE END 2 */

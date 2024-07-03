@@ -14,10 +14,12 @@
 void KEY_Scan(void);
 uint8_t Button_GetState(uint16_t pin);
 uint8_t Button_Debounce(uint16_t pin);
+uint8_t KEY_Value = 0;
+
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
-/* function of KEY_SCAN                                                           */
+/* function of KEY_SCAN                                                       */
 /*----------------------------------------------------------------------------*/
 void KEY_Scan(void)
 {
@@ -25,35 +27,27 @@ void KEY_Scan(void)
 	uint8_t button2State = Button_Debounce(KEY_B__Pin);
 	uint8_t button3State = Button_Debounce(KEY_CO_Pin);
 
+	//以下内容替换成消息队列进行数据传递
 	if (button1State) // 按键1被按下时执行的代码
 	{
-			
-	} else // 按键1松开时执行的代码
-	{
-			
-	}
+			KEY_Value = 1;
+	} 
 
 	if (button2State) // 按键2被按下时执行的代码
 	{
-			
-	} else // 按键2松开时执行的代码
-	{
-			
-	}
+			KEY_Value = 3;
+	} 
 
 	if (button3State) // 按键3被按下时执行的代码
 	{
-			
-	} else // 按键3松开时执行的代码
-	{
-			
-	}
+			KEY_Value = 5;
+	} 
 }
 
 
 // 获取按键状态，返回1表示按键按下，返回0表示按键松开
 uint8_t Button_GetState(uint16_t pin) {
-    return HAL_GPIO_ReadPin(BUTTON_PORT, pin) == GPIO_PIN_RESET ? 1 : 0; //这里调试看一下输出0还是1
+    return HAL_GPIO_ReadPin(BUTTON_PORT, pin) == GPIO_PIN_RESET ? 0 : 1; 
 }
 
 

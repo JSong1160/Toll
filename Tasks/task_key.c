@@ -10,11 +10,12 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "task_key.h"
+#include "usart.h"
 /* USER CODE BEGIN 0 */
 void KEY_Scan(void);
 uint8_t Button_GetState(uint16_t pin);
 uint8_t Button_Debounce(uint16_t pin);
-uint8_t KEY_Value = 0;
+uint8_t KEY_Value[3] = {0};
 
 /* USER CODE END 0 */
 
@@ -26,22 +27,25 @@ void KEY_Scan(void)
 	uint8_t button1State = Button_Debounce(KEY_A__Pin);
 	uint8_t button2State = Button_Debounce(KEY_B__Pin);
 	uint8_t button3State = Button_Debounce(KEY_CO_Pin);
-
+  KEY_Value[0] = button1State;
+	KEY_Value[1] = button2State;
+	KEY_Value[2] = button3State;
 	//以下内容替换成消息队列进行数据传递
 	if (button1State) // 按键1被按下时执行的代码
 	{
-			KEY_Value = 1;
+			HAL_UART_Transmit(&huart1, KEY_Value, 1, 2000);//KEY_Value = 1;
 	} 
 
 	if (button2State) // 按键2被按下时执行的代码
 	{
-			KEY_Value = 3;
+			HAL_UART_Transmit(&huart1, KEY_Value, 1, 2000);//KEY_Value = 1;
 	} 
 
 	if (button3State) // 按键3被按下时执行的代码
 	{
-			KEY_Value = 5;
+			HAL_UART_Transmit(&huart1, KEY_Value, 1, 2000);//KEY_Value = 1;
 	} 
+	HAL_Delay(300);
 }
 
 

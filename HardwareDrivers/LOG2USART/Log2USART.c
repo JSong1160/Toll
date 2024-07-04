@@ -1,40 +1,29 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    log2usart.c
-  * @brief   This file provides code for the configuration
-  *          of PB12,PB13,PB14 to KEY.
+  * @file    key.c
+  * @brief   This file provides code for LOG to use USART.
   ******************************************************************************
   */
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
-#include "gpio.h"
+#include "log2usart.h"
 
 /* USER CODE BEGIN 0 */
-
+int fputc(int ch, FILE *f);
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
 /* Configure GPIO                                                             */
 /*----------------------------------------------------------------------------*/
-void KEY_Init(void)
-{
-
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOD_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
-
-  /*Configure GPIO pins : PBPin PBPin PBPin */
-  GPIO_InitStruct.Pin = KEY_CO_Pin|KEY_B__Pin|KEY_A__Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
+int fputc(int ch, FILE *f)
+{      
+	while((USART1->SR&0X40)==0)//循环发送,直到发送完毕   
+    USART1->DR = (uint8_t) ch;      
+	return ch;
 }
+
 
 /* USER CODE BEGIN 2 */
 

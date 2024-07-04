@@ -30,7 +30,7 @@ void KEY_Scan(void)
   KEY_Value[0] = button1State;
 	KEY_Value[1] = button2State;
 	KEY_Value[2] = button3State;
-	//以下内容替换成消息队列进行数据传递
+	//以下内容替换成消息队列进行数据传递(LCD_Display Done 之后)
 	if (button1State) // 按键1被按下时执行的代码
 	{
 			HAL_UART_Transmit(&huart1, KEY_Value, 1, 2000);//KEY_Value = 1;

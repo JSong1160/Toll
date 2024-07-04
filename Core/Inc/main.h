@@ -57,14 +57,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-//485通讯接口定义
 #define RS485_TX_Pin GPIO_PIN_2
 #define RS485_TX_GPIO_Port GPIOA
 #define RS485_RX_Pin GPIO_PIN_3
 #define RS485_RX_GPIO_Port GPIOA
-
-
-//按键接口定义
 #define KEY_CO_Pin GPIO_PIN_12
 #define KEY_CO_GPIO_Port GPIOB
 #define KEY_B__Pin GPIO_PIN_13
@@ -72,12 +68,10 @@ void Error_Handler(void);
 #define KEY_A__Pin GPIO_PIN_14
 #define KEY_A__GPIO_Port GPIOB
 
-
+/* USER CODE BEGIN Private defines */
 //按键消抖定义
 #define BUTTON_PORT GPIOB     // 按键连接的端口
 #define DEBOUNCE_DELAY 50      // 消抖延迟时间，单位：毫秒
-
-/* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 

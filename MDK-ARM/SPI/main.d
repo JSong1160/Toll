@@ -38,7 +38,8 @@ spi\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
 spi\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
 spi\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/portmacro.h
 spi\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+spi\main.o: ../Core/Inc/dma.h
 spi\main.o: ../Core/Inc/spi.h
 spi\main.o: ../Core/Inc/usart.h
 spi\main.o: ../Core/Inc/gpio.h
-spi\main.o: ..\HardwareDrivers\KEY\key.h
+spi\main.o: ../HardwareDrivers/KEY/key.h

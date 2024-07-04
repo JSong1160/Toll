@@ -1,6 +1,6 @@
 spi\task_key.o: ..\Tasks\task_key.c
 spi\task_key.o: ..\Tasks\task_key.h
-spi\task_key.o: ..\HardwareDrivers\KEY\key.h
+spi\task_key.o: ../HardwareDrivers/KEY/key.h
 spi\task_key.o: ../Core/Inc/main.h
 spi\task_key.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 spi\task_key.o: ../Core/Inc/stm32f1xx_hal_conf.h

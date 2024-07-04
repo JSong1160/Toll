@@ -40,5 +40,8 @@ spi\freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 spi\freertos.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 spi\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 spi\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
-spi\freertos.o: ..\Tasks\task_key.h
-spi\freertos.o: ..\HardwareDrivers\KEY\key.h
+spi\freertos.o: ../Tasks/task_key.h
+spi\freertos.o: ../HardwareDrivers/KEY/key.h
+spi\freertos.o: ../HardwareDrivers/LOG2USART/log2usart.h
+spi\freertos.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+spi\freertos.o: ../Core/Inc/usart.h

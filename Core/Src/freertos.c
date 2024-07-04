@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "task_key.h"
+#include "log2usart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -155,8 +156,9 @@ void key_scan(void *argument)
   /* Infinite loop */
   for(;;)
   {
+		//printf("Task of KEY_SCAN is running!");
 		KEY_Scan();
-    osDelay(1);
+    osDelay(500);
   }
   /* USER CODE END key_scan */
 }

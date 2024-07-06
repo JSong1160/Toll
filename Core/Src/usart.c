@@ -154,7 +154,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     /* USART1 interrupt Init */
     HAL_NVIC_SetPriority(USART1_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(USART1_IRQn);
-    /* USER CODE BEGIN USART1_MspInit 1 */
+  /* USER CODE BEGIN USART1_MspInit 1 */
 	  HAL_UART_Receive_DMA(&huart1,UART_rx_buffer,2048);    // 开启DMA接收
     __HAL_UART_ENABLE_IT(&huart1,UART_IT_IDLE);      // 开启串口的空闲中断
 

@@ -37,6 +37,8 @@
 "spi\port.o"
 "spi\key.o"
 "spi\log2usart.o"
+"spi\lcd.o"
+"spi\lcd_init.o"
 "spi\task_key.o"
 --library_type=microlib --strict --scatter "SPI\SPI.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

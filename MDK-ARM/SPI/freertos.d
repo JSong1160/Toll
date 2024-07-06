@@ -45,3 +45,6 @@ spi\freertos.o: ../HardwareDrivers/KEY/key.h
 spi\freertos.o: ../HardwareDrivers/LOG2USART/log2usart.h
 spi\freertos.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 spi\freertos.o: ../Core/Inc/usart.h
+spi\freertos.o: ../Core/Inc/spi.h
+spi\freertos.o: ../HardwareDrivers/LCD/inc/lcd_init.h
+spi\freertos.o: ../Core/Inc/gpio.h

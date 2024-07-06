@@ -61,6 +61,8 @@ void Error_Handler(void);
 #define RS485_TX_GPIO_Port GPIOA
 #define RS485_RX_Pin GPIO_PIN_3
 #define RS485_RX_GPIO_Port GPIOA
+#define SPI1_CS_Pin GPIO_PIN_4
+#define SPI1_CS_GPIO_Port GPIOA
 #define KEY_CO_Pin GPIO_PIN_12
 #define KEY_CO_GPIO_Port GPIOB
 #define KEY_B__Pin GPIO_PIN_13

@@ -246,7 +246,6 @@ void USART1_IRQHandler(void)
   /* USER CODE END USART1_IRQn 1 */
 }
 
-
 /**
   * @brief This function handles USART2 global interrupt.
   */

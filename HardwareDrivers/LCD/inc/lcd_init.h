@@ -20,6 +20,8 @@
 #define LCD_W_CharNum 40
 #endif
 
+
+#define soft_spi 1
 //PA4 -> NSS(CS) PA5 -> SCK(SCL) PA6 -> DC PA7 -> MOSI(SDA)
 //-----------------LCD¶Ë¿Ú¶¨Òå----------------
 //SCL=SCLK

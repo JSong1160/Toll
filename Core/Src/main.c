@@ -28,6 +28,7 @@
 /* USER CODE BEGIN Includes */
 #include "key.h"
 #include "lcd.h"
+#include "lcd_init.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,7 +99,8 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   KEY_Init();
-	//LCD_Init();
+	LCD_Init();
+	LCD_Fill(0,0,LCD_W,LCD_H,WHITE);
   /* USER CODE END 2 */
 
   /* Init scheduler */

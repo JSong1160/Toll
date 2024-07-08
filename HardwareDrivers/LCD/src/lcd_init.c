@@ -1,5 +1,5 @@
 #include "../inc/lcd_init.h"
-
+#include "spi.h"
 
 void LCD_GPIO_Init(void)
 {
@@ -11,13 +11,14 @@ void LCD_GPIO_Init(void)
 
     /*Configure GPIO pin Output Level */
 //    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7, GPIO_PIN_SET);
-
+		#if soft_spi
     /*Configure GPIO pins : PA4 PA5 PA6 PA7 */
     GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
     GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+		#endif
 }
 
 
@@ -28,6 +29,7 @@ void LCD_GPIO_Init(void)
 ******************************************************************************/
 void LCD_Writ_Bus(u8 dat)
 {
+	#if soft_spi
     u8 i;
     LCD_CS_Clr();
     for(i=0;i<8;i++)
@@ -45,6 +47,15 @@ void LCD_Writ_Bus(u8 dat)
         dat<<=1;
     }
     LCD_CS_Set();
+		#endif
+		#if (soft_spi==0)
+	LCD_CS_Clr();
+ // while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);//检查接收标志位
+	HAL_SPI_Transmit(&hspi1,&dat,1, 10); 
+	LCD_CS_Set();
+		
+#endif
+		
 }
 
 
@@ -229,6 +240,7 @@ void LCD_Init(void)
     LCD_WR_REG(0x21);
 
     LCD_WR_REG(0x11);
+		HAL_Delay(200);
     LCD_WR_REG(0x29);
 }
 

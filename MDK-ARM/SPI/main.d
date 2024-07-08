@@ -44,3 +44,4 @@ spi\main.o: ../Core/Inc/usart.h
 spi\main.o: ../Core/Inc/gpio.h
 spi\main.o: ../HardwareDrivers/KEY/key.h
 spi\main.o: ../HardwareDrivers/LCD/inc/lcd.h
+spi\main.o: ../HardwareDrivers/LCD/inc/lcd_init.h

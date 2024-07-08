@@ -155,16 +155,9 @@ void StartDefaultTask(void *argument)
 void key_scan(void *argument)
 {
   /* USER CODE BEGIN key_scan */
-	uint8_t data[3];
-	
   /* Infinite loop */
   for(;;)
   {
-		data[0] = 0x11;
-	LCD_CS_Clr();
-  HAL_SPI_Transmit(&hspi1,data, 1, 1000);	//SPI_I2S_SendData(SPI1,dat);
-	HAL_Delay(1);
-	LCD_CS_Set();
     osDelay(500);
   }
   /* USER CODE END key_scan */
